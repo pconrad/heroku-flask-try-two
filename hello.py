@@ -15,7 +15,7 @@ def convertFtoC(ftempString):
     ftemp = 0.0
     try:
         ftemp = float(ftempString)
-        ctemp = ftoc(temp)
+        ctemp = ftoc(ftemp)
         return "In Farenheit: " + ftempString + " In Celsius " + str(ctemp) 
     except ValueError:
         return "Sorry.  Could not convert " + ftempString + " to a number"
