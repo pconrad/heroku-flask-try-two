@@ -7,7 +7,7 @@ app = Flask(__name__)
 def hello():
     return 'Hello World!!'
 
-def ftoc(ftempString):
+def ftoc(ftemp):
     return (ftemp - 32 ) * (5.0/9.0)
     
 @app.route('/ftoc/<ftempString>')
