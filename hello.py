@@ -11,7 +11,7 @@ def ftoc(ftempString):
     return (ftemp - 32 ) * (5.0/9.0)
     
 @app.route('/ftoc/<ftempString>')
-def convertFtoC(ftempString)
+def convertFtoC(ftempString):
     ftemp = 0.0
     try:
         ftemp = float(ftempString)
