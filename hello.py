@@ -20,4 +20,6 @@ def convertFtoC(ftempString):
     except ValueError:
         return "Sorry.  Could not convert " + ftempString + " to a number"
 
-    
+@app.route('/ftocForm')
+def ftocForm():
+    return "stub"
