@@ -1,35 +1,34 @@
 import os
-from flask import Flask, url_for, render_template
+from flask import Flask, url_for, render_template, request
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def helloRoot():
-    return 'Hello SPIS  Banana Pineapple!!!'
+    return "Try <a href='" + url_for('tempConvert') + "'>Temperature Conversion</a>"
 
 def ftoc(ftemp):
     return (ftemp - 32 ) * (5.0/9.0)
-    
-@app.route('/ftoc/<ftempString>')
-def convertFtoC(ftempString):
-    ftemp = 0.0
+
+@app.route('/tempConvert')
+def tempConvert():
+    return render_template('tempConvert.html')
+
+@app.route('/doTempConvert')
+def doTempConvert():
+
     try:
-        ftemp = float(ftempString)
-        ctemp = ftoc(ftemp)
-        return "In Farenheit: " + ftempString + " In Celsius " + str(ctemp) 
+
+        ftemp=float(request.args['ftemp']);
+        ctemp=ftoc(ftemp)
+        return render_template('tempConvertResult.html',
+                               showFtemp=ftemp,
+                               showCtemp=ctemp)
     except ValueError:
-        return "Sorry.  Could not convert " + ftempString + " to a number"
-
-
-@app.route('/hello/')
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('hello.html', name=name)
-
-@app.route('/ftocForm')
-def ftocForm():
-    return "stub"
-
+        return "bar"
+        return render_template('couldNotConvert.html',
+                               showFtemp=ftemp);
+    
 if __name__=="__main__":
-    app.run(debug=False)
+    app.run(debug=True)
