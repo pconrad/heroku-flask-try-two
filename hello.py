@@ -20,7 +20,7 @@ def doTempConvert():
 
     try:
 
-        ftemp=float(request.args['ftemp']);
+        ftemp=float(request.args['potato']);
         ctemp=ftoc(ftemp)
         return render_template('tempConvertResult.html',
                                showFtemp=ftemp,
@@ -31,4 +31,4 @@ def doTempConvert():
                                showFtemp=ftemp);
     
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=False)
